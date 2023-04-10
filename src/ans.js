@@ -1,6 +1,7 @@
 import React from 'react';
 import Music from './music';
 
+// initialize selected product index as -1
 var num1 = -1;
 
 class Ans extends React.Component {
@@ -8,7 +9,7 @@ class Ans extends React.Component {
     super(props);
     this.state = {
       products: [
-        {
+        { 
           name: "Cover Flow",
           id: 1,
           backgroundColor: "transparent",
@@ -33,22 +34,25 @@ class Ans extends React.Component {
     };
   }
 
+  // set initial background color for first product on mount
   componentDidMount() {
-    // set initial background color for first product
     this.setProductBackgroundColor(0, "");
   }
 
+  // function to set background color for a product
   setProductBackgroundColor = (productIndex, color) => {
     const products = [...this.state.products];
     products[productIndex].backgroundColor = color;
     this.setState({ products });
   };
 
-  handleMenuMouseEnter = () => {
-    // set background color for selected product and reset others
+  // function to handle mouse enter event on a product
+  handleMouseEnter = () => {
+    // reset all products background color
     const products = [...this.state.products];
     products.forEach((product) => (product.backgroundColor = "transparent"));
     
+    // set background color and width for selected product
     products[this.state.selectedProductIndex].backgroundColor = "lightblue";
     products[this.state.selectedProductIndex].backgroundWidth = "100px";
 
@@ -57,21 +61,27 @@ class Ans extends React.Component {
     this.setState({ products, selectedProductIndex });
   };
 
-  handleMouseEnter = () => {
-    num1 = this.state.selectedProductIndex;
-    console.log(num1);
-    this.handleMenuMouseEnter();
+  // function to handle click event on a product
+  handleClick = () => {
+    // if no product is selected, set selected product index as current index
+    if (num1 === -1) {
+      num1 = this.state.selectedProductIndex;
+      console.log(num1);
+      this.handleMouseEnter();
+    }
   };
-
+  
+  // function to handle menu button click
   Menu = () => {
-    console.log("menu");
+    // reset selected product index and call handleMouseEnter function
     num1 = -1;
-    this.handleMenuMouseEnter();
+    this.handleMouseEnter();
   };
 
   render() {
     const { products } = this.state;
 
+    // render the product menu
     if (num1 === -1) {
       return (
         <div className="ipod__screen">
@@ -99,9 +109,10 @@ class Ans extends React.Component {
       );
     }
 
+    // render the settings page
     if (num1 === 0) {
         return (
-          <div className="ipod__screen" style={{ overflow: "hidden"}}>
+          <div className="ipod__screen" style={{ overflow: "hidden",width:"190px"}}>
             <h1 style={{ width: "100%", height: "100%"}}>
               <img src="https://cdn.pixabay.com/photo/2012/05/04/10/57/gear-47203_960_720.png" alt="setting" id="island-image"></img>
 
@@ -126,6 +137,7 @@ class Ans extends React.Component {
           <div className="left">
             <ul>
               <div>
+                
                 <Music />
               </div>
             </ul>
@@ -158,5 +170,13 @@ class Ans extends React.Component {
 
   }
 }
+
+
+
+
+
+
+
+        
 
 export default Ans;

@@ -3,14 +3,14 @@ import "./ipod.css";
 import Ans from "./ans";
 
 class Ipod extends Component {
-  handleMenuMouseEnter = () => {
-    // Call the handleMenuMouseEnter prop function in the Ans component
-    this.ansComponent.handleMenuMouseEnter();
-  }; 
-
   handleMouseEnter = () => {
     // Call the handleMouseEnter prop function in the Ans component
     this.ansComponent.handleMouseEnter();
+  }; 
+
+  handleClick = () => {
+    // Call the handleMouseClick prop function in the Ans component
+    this.ansComponent.handleClick();
     };
 
     Menu = () => {
@@ -51,7 +51,7 @@ class Ipod extends Component {
           <div className="ipod__wheel">
             <div className="wheel__top">
               {/* Use the handleMenuMouseEnter function in the onMouseEnter event */}
-              <div id="Menu"  onClick={this.Menu} onMouseEnter={this.handleMenuMouseEnter}>
+              <div id="Menu"  onClick={this.Menu} onMouseEnter={this.handleMouseEnter}>
                 Menu
               </div>
             </div>
@@ -61,7 +61,7 @@ class Ipod extends Component {
                   src="https://cdn-icons-png.flaticon.com/128/467/467150.png"
                   alt="play"
                   id="i1"
-                  onMouseEnter={this.handleMenuMouseEnter}
+                  onMouseEnter={this.handleMouseEnter}
                 />
               </div>
               <div id="select">
@@ -69,7 +69,7 @@ class Ipod extends Component {
                   src="https://cdn-icons-png.flaticon.com/128/876/876173.png"
                   alt="select"
                   id="i2"
-                  onClick={this.handleMouseEnter}
+                  onClick={this.handleClick}
                 />
               </div>
               <div id="fastforward">
@@ -77,7 +77,7 @@ class Ipod extends Component {
                   src="https://cdn-icons-png.flaticon.com/128/4210/4210646.png"
                   alt="fastforward"
                   id="i3"
-                  onMouseEnter={this.handleMenuMouseEnter}
+                  onMouseEnter={this.handleMouseEnter}
                 />
               </div>
             </div>
@@ -87,7 +87,7 @@ class Ipod extends Component {
                   src="https://cdn-icons-png.flaticon.com/128/7375/7375961.png"
                   alt="play/pause"
                   id="i4"
-                  onMouseEnter={this.handleMenuMouseEnter}
+                  onMouseEnter={this.handleMouseEnter}
                 />
               </div>
             </div>
